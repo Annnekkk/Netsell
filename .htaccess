@@ -1,0 +1,41 @@
+RewriteEngine On
+
+ErrorDocument 404 /ErrorDocument/404.php
+
+RewriteRule ^home/$ /index.php [L]
+RewriteRule ^login/$ /public/auth [L]
+RewriteRule ^api/login$ /public/auth/dangnhap.php
+RewriteRule ^register/$ /public/auth [L]
+RewriteRule ^api/register$ /public/auth/dangky.php
+RewriteRule ^logout/$ /public/auth/out.php [L]
+
+RewriteRule ^forgot-password/$ /public/QuenMatKhau.php [L]
+RewriteRule ^reset-password/([A-Za-z0-9-]+) /public/ResetPassword.php?token=$1 [L]
+
+RewriteRule ^pay/card/$ /public/naptien/card.php [L]
+RewriteRule ^api/card$ /model/card.php [L]
+RewriteRule ^pay/bank/$ /public/naptien/bank.php [L]
+
+RewriteRule ^api/buy$ /model/buy.php [L]
+RewriteRule ^history/orders/$ /public/clone/donhang.php [L]
+RewriteRule ^order/view/([A-Za-z0-9-]+) /public/clone/view.php?id=$1 [L]
+RewriteRule ^pay/bank/$ /public/NapBank.php [L]
+RewriteRule ^profile/$ /public/Profile.php [L]
+
+
+RewriteRule ^tools/check-live-clone/$ /public/CheckLiveClone.php [L]
+RewriteRule ^support/$ /public/DanhSachHoTro.php [L]
+RewriteRule ^support/([A-Za-z0-9-]+) /public/XemHoTro.php?id=$1 [L]
+RewriteRule ^download/([A-Za-z0-9-]+) /file/DownloadFile.php?token=$1 [L]
+RewriteRule ^giftcode/$ /public/Giftcode.php [L]
+RewriteRule ^shop/bm/$ /public/ShopBM.php [L]
+RewriteRule ^shop/clone/$ /public/ShopCLONE.php [L]
+RewriteRule ^shop/via/$ /public/ShopVIA.php [L]
+RewriteRule ^AjaxMuaClone$ /model/Buy.php [L]
+RewriteRule ^api/get_buy/$ /api/apigetbuy.php [L]
+RewriteRule ^affiliate-manager/$ /public/CongTacVien.php [L]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
